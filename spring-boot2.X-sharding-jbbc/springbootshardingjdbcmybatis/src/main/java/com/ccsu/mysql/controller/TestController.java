@@ -2,7 +2,10 @@ package com.ccsu.mysql.controller;
 
 import com.ccsu.mysql.dto.ResultData;
 import com.ccsu.mysql.entity.GoodsEntity;
+import com.ccsu.mysql.entity.OrderEntity;
+import com.ccsu.mysql.entity.UserEntity;
 import com.ccsu.mysql.service.GoodsService;
+import com.ccsu.mysql.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +23,8 @@ public class TestController {
 
     @Autowired
     private GoodsService goodsService;
+    @Autowired
+    UsersService usersService;
 
     @RequestMapping("/query")
     public ResultData test(){
@@ -34,6 +39,12 @@ public class TestController {
         return  new ResultData(0,"success",null);
     }
 
+
+    @RequestMapping("/queryByUser")
+    public ResultData insert(){
+        List<UserEntity> users = usersService.queryUsers();
+        return  new ResultData(0,"success",users);
+    }
 
 
 

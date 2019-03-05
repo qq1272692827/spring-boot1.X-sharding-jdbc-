@@ -1,6 +1,6 @@
 package com.ccsu.mysql.service.impl;
 
-import com.ccsu.mysql.dao.OrderMapper;
+import com.ccsu.mysql.dao.order.OrderMapper;
 import com.ccsu.mysql.entity.OrderEntity;
 import com.ccsu.mysql.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +32,8 @@ public class OrderServiceIMPL implements OrderService {
     }
 
 
+    public List<OrderEntity> queryOrderList(long userId){
+        return orderMapper.queryOrdersByUser(userId);
+    }
 
 }

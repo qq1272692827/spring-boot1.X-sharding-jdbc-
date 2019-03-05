@@ -11,4 +11,6 @@ public interface OrderService {
 
     public void insert(long orderID, long userId,String addressId,String price);
 
+    public List<OrderEntity> queryOrderList(long userId);
+
 }

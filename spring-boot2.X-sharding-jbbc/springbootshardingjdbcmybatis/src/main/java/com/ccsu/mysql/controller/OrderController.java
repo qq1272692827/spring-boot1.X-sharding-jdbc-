@@ -3,6 +3,7 @@ package com.ccsu.mysql.controller;
 import com.ccsu.mysql.dto.ResultData;
 import com.ccsu.mysql.entity.GoodsEntity;
 import com.ccsu.mysql.entity.OrderEntity;
+import com.ccsu.mysql.entity.UserEntity;
 import com.ccsu.mysql.service.GoodsService;
 import com.ccsu.mysql.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,13 +32,19 @@ public class OrderController {
         return  new ResultData(0,"success",resultData);
     }
 
-    @RequestMapping("add")
+    @RequestMapping("/add")
     public ResultData insert(@RequestParam long orderId,@RequestParam long userId,@RequestParam String addressId,@RequestParam String price){
         orderService.insert(orderId,userId,addressId,price);
         return  new ResultData(0,"success",null);
     }
 
 
+
+    @RequestMapping("/queryByUser")
+    public ResultData insert(@RequestParam long userId){
+        List<OrderEntity> users = orderService.queryOrderList(userId);
+        return  new ResultData(0,"success",users);
+    }
 
 
 
